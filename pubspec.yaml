@@ -1,5 +1,5 @@
 name: tamar
-description: Track Automative Mileage and Receipts
+description: Track Automotive Mileage and Receipts
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
@@ -31,11 +31,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-  very_good_analysis: 10.1.0
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  very_good_analysis: 10.1.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -1,4 +1,4 @@
-# Tamar: Track Automative Mileage and Receipts
+# Tamar: Track Automotive Mileage and Receipts
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/tomsdex/tamar/main.yml?branch=main)](https://github.com/tomsdex/tamar/actions)
 [![Style: Very Good Analysis](https://img.shields.io/badge/style-very_good_analysis-B22C11.svg)](https://pub.dev/packages/very_good_analysis)
