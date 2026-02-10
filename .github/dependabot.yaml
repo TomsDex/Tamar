@@ -1,0 +1,33 @@
+# AI Generated File.
+version: 2
+updates:
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    # This makes Dependabot use "ci: bump actions/checkout..."
+    commit-message:
+      prefix: "ci"
+
+  # Flutter Packages
+  - package-ecosystem: "pub"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    # This makes Dependabot use "chore: bump flutter_bloc..."
+    commit-message:
+      prefix: "chore"
+      include: "scope"

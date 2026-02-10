@@ -1,0 +1,52 @@
+# AI Generated File.
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality-gate:
+    name: Quality Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Setup Flutter with caching for speed
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      # 1. Enforce Formatting (Fail if code is messy)
+      - name: Check Formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      # 2. Strict Analysis (Fail on any warning or info)
+      - name: Analyze Code
+        run: flutter analyze --fatal-infos --fatal-warnings
+
+      # 3. Run Tests with Coverage
+      - name: Run Tests
+        run: flutter test --coverage
+
+      # 4. Enforce Coverage (Fail if under 100%)
+      - name: Check Code Coverage
+        uses: verygoodopensource/very_good_coverage@v3
+        with:
+          path: "./coverage/lcov.info"
+          min_coverage: 90
+          exclude: "**/*.g.dart **/*.freezed.dart"
