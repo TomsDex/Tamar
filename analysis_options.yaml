@@ -1,0 +1,42 @@
+# AI Generated File.
+# Maintains the analysis options for the project, enforcing code quality and consistency.
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  # 1. Exclude generated code (Freezed, JSON Serializable, etc.)
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "test/.test_coverage.dart"
+
+  language:
+    # 2. Maximum Type Safety
+    #    These force you to be explicit about types (no 'dynamic' unless necessary).
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+
+  errors:
+    # 3. The "Zero Tolerance" Policy
+    missing_return: error
+    dead_code: error
+    todo: ignore # Hides TODOs from the "Problems" tab
+    unused_import: error # Fails build if you have unused imports
+    unused_local_variable: error
+    public_member_api_docs: ignore
+
+linter:
+  rules:
+    # 4. Customizing the Rules
+    #    Very Good Analysis is strict. You can disable specific rules here
+    #    if they become too annoying for your specific workflow.
+
+    # Example: VGV forces you to write documentation comments (///) for
+    # every public class/method. If that is too much, uncomment the line below:
+    # public_member_api_docs: false
+
+    # Enforce single quotes for consistency (VGV does this, but good to be explicit)
+    prefer_single_quotes: true
+
+    # Sort dependencies alphabetically in pubspec.yaml
+    sort_pub_dependencies: true
